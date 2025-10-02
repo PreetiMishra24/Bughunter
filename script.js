@@ -37,6 +37,7 @@ function updateScore(){
 }
 
 // Spawn one bug (emoji-based)
+// Spawn one bug (emoji-based)
 function spawnBug(){
   const { maxX, maxY } = getBounds();
   const bug = document.createElement('div');
@@ -61,17 +62,19 @@ function spawnBug(){
 
   function squash(){
     if(!gameArea.contains(bug)) return;
-    score++; updateScore();
+    score++;
+    updateScore();
     bug.style.transform = 'scale(0.7) rotate(-18deg)';
     clearTimers();
     setTimeout(()=> bug.remove(), 140);
   }
 
+  // click / keyboard squash
   bug.addEventListener('click', squash);
   bug.addEventListener('keydown', (e)=>{
     if(e.key === 'Enter' || e.key === ' '){ 
-      e.preventDefault(); 
-      squash(); 
+      e.preventDefault();
+      squash();
     }
   });
 
@@ -93,8 +96,10 @@ function spawnBug(){
   bug._moveId = moveId;
   bug._vanishId = vanishId;
 
+  // finally add bug to game
   gameArea.appendChild(bug);
-}  // 👈 closes spawnBug() properly
+}
+
 
 function startGame(){
   // reset state
