@@ -1,0 +1,60 @@
+# Bug Hunter — 3‑file version
+
+Copy each code block into a separate file in the **same folder**:
+
+* `index.html`
+* `style.css`
+* `script.js`
+
+No external build tools are required. Open `index.html` to play locally.
+
+---
+
+## index.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bug Hunter — click the bugs!</title>
+
+  <!-- Google font (safe, optional) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>🐞 Bug Hunter</h1>
+      <p class="subtitle">Click the bugs before they escape!</p>
+      <div class="controls">
+        <button id="start" class="btn">Start Game</button>
+        <button id="restart" class="btn ghost" style="display:none">Play Again</button>
+      </div>
+    </header>
+
+    <section id="game" aria-label="Game area" role="application"></section>
+
+    <aside class="info" aria-live="polite">
+      <div>Score: <strong id="score">0</strong></div>
+      <div>Time left: <strong id="time">30</strong>s</div>
+    </aside>
+
+    <div id="overlay" class="overlay" role="dialog" aria-hidden="true">
+      <div class="overlay-card">
+        <h2>Game over!</h2>
+        <p>Your score: <span id="finalScore">0</span></p>
+        <button id="closeOverlay" class="btn">Close</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">Made with ☕ and QA curiosity</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

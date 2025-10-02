@@ -1,0 +1,65 @@
+:root{
+
+
+/* Game area */
+#game{
+width:var(--game-size);
+height:var(--game-size);
+margin:18px auto;
+border-radius:16px;
+background:var(--card);
+box-shadow:0 6px 24px rgba(11,79,114,0.08);
+position:relative;
+overflow:hidden;
+border:4px solid rgba(11,79,114,0.06);
+}
+
+
+/* bug element (emoji-based, no external assets) */
+.bug{
+width:var(--bug-size);
+height:var(--bug-size);
+position:absolute;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:calc(var(--bug-size) - 6px);
+line-height:1;
+cursor:pointer;
+user-select:none;
+touch-action: manipulation;
+transform-origin:center;
+transition: top 600ms linear, left 600ms linear, transform 160ms ease;
+outline: none;
+}
+
+
+/* subtle wiggle */
+.bug.wiggle{ animation: wiggle 420ms infinite alternate ease-in-out; }
+@keyframes wiggle { from{ transform: rotate(-10deg);} to{ transform: rotate(10deg);} }
+
+
+/* info */
+.info{display:flex;gap:20px;justify-content:center;margin-bottom:18px;color:#123a4d;font-weight:600}
+
+
+/* overlay (end game) */
+.overlay{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(10,20,30,0.4); visibility:hidden; opacity:0; transition:opacity .18s; }
+.overlay[aria-hidden="false"]{ visibility:visible; opacity:1; }
+.overlay-card{ background:var(--card); padding:20px; border-radius:14px; text-align:center; min-width:260px; box-shadow:0 10px 30px rgba(0,0,0,.08); }
+.footer{ margin:18px 0 40px; color:#50606a; font-size:14px; text-align:center }
+
+
+/* accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce){
+.bug{ transition: none; }
+.bug.wiggle{ animation: none; }
+}
+
+
+/* responsive tweaks */
+@media (max-width:420px){
+.hero h1{font-size:1.6rem}
+:root{--bug-size:38px}
+}
+}
